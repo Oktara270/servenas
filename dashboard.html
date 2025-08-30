@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Dashboard</h2>
+        <p>Selamat datang di halaman utama. Anda telah berhasil login!</p>
+        <p>Anda dapat menempatkan konten website Anda di sini.</p>
+        <button id="logoutButton">Logout</button>
+    </div>
+
+    <script>
+        // Memeriksa status login saat halaman dimuat
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (isLoggedIn !== 'true') {
+            // Jika belum login, redirect ke halaman login
+            window.location.href = 'index.html';
+        }
+
+        // Logika logout
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            // Hapus status login dan redirect ke halaman login
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
