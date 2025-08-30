@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Selamat Datang</h2>
+        <p>Silakan login untuk melanjutkan.</p>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Nama Pengguna:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Kata Sandi:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p id="message"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form untuk submit secara default
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+
+            // Logika validasi login
+            if (username === 'user' && password === '123') {
+                // Jika login berhasil, simpan status login dan redirect ke dashboard
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'dashboard.html';
+            } else {
+                // Jika login gagal
+                messageElement.textContent = 'Nama pengguna atau kata sandi salah!';
+                messageElement.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
